@@ -6,15 +6,16 @@ console.log(galleryItems);
 
 const galleryContainer = document.querySelector('.gallery');
 const imgEl = createImg(galleryItems);
-galleryContainer.insertAdjacentHTML('beforeend',imgEl);
+galleryContainer.insertAdjacentHTML('beforeend', imgEl);
 // galleryContainer.addEventListener('click',onContainerClick);
-const  imgelTarget = document.querySelector('.gallery__image');
+const imgelTarget = document.querySelector('.gallery__image');
 
 // console.log(galleryItems);
 
-function createImg (galleryEl) {
-    return galleryEl.map(({preview,original,description})=>{
-        return `
+function createImg(galleryEl) {
+  return galleryEl
+    .map(({ preview, original, description }) => {
+      return `
         <div class="gallery__item">
         <a class="gallery__link" href="${original}">
           <img
@@ -26,13 +27,11 @@ function createImg (galleryEl) {
         </a>
       </div>
         `;
-    }).join('')
+    })
+    .join('');
 }
-
 
 let lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
-  captionDelay:250,
-  
-  });
-
+  captionDelay: 250,
+});
